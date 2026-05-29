@@ -3,7 +3,16 @@
 </script>
 
 <footer>
-	<p>&copy; {year} Dhanendra Kumar &middot; built with SvelteKit on GitHub Pages</p>
+	<div class="row">
+		<p class="copy">&copy; {year} Dhanendra Kumar</p>
+		<nav class="links" aria-label="Footer">
+			<a href="/rss.xml" aria-label="RSS feed">RSS</a>
+			<span aria-hidden="true">·</span>
+			<a href="https://github.com/dhanendra-kumar" aria-label="GitHub">GitHub</a>
+			<span aria-hidden="true">·</span>
+			<span class="meta">built with SvelteKit</span>
+		</nav>
+	</div>
 </footer>
 
 <style>
@@ -14,10 +23,38 @@
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
 		color: var(--color-muted);
-		text-align: center;
 	}
 
-	footer p {
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.copy {
 		margin: 0;
+	}
+
+	.links {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.links a {
+		color: var(--color-muted);
+		background-image: none;
+	}
+
+	.links a:hover {
+		color: var(--color-accent);
+		background-image: none;
+	}
+
+	.meta {
+		color: var(--color-muted);
+		opacity: 0.7;
 	}
 </style>

@@ -26,4 +26,14 @@ describe('/blog index', () => {
 		expect(items[0]).toHaveTextContent(/Newer post/);
 		expect(items[1]).toHaveTextContent(/Older post/);
 	});
+
+	it('renders each post as a card with date, title, and tags', () => {
+		render(Page, { data: { posts: fixturePosts } });
+
+		const items = screen.getAllByRole('listitem');
+		const newer = items[0];
+		expect(newer.className).toMatch(/post-card/);
+		expect(within(newer).getByText('2026-05-22')).toBeInTheDocument();
+		expect(within(newer).getByText(/svelte/i)).toBeInTheDocument();
+	});
 });

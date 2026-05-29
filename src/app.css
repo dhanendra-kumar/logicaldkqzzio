@@ -9,28 +9,53 @@
 	--font-mono:
 		ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 
-	--color-bg: #fafafa;
-	--color-fg: #1a1a1a;
-	--color-muted: #57606a;
+	--color-bg: #f7f8fa;
+	--color-fg: #0f1419;
+	--color-muted: #5b6573;
 	--color-accent: #0a7d23;
 	--color-link: #0969da;
-	--color-border: #d0d7de;
+	--color-border: #d6dce3;
 	--color-code-bg: #eef1f4;
+
+	--color-bg-elevated: #ffffff;
+	--color-surface: rgba(255, 255, 255, 0.72);
+	--color-surface-hover: rgba(255, 255, 255, 0.92);
+	--color-accent-soft: rgba(10, 125, 35, 0.12);
+	--color-accent-strong: #086a1d;
+	--color-grad-1: #0a7d23;
+	--color-grad-2: #0969da;
+	--color-grad-3: #7b3fe4;
+	--shadow-soft: 0 1px 2px rgba(15, 20, 25, 0.04), 0 4px 16px rgba(15, 20, 25, 0.06);
+	--shadow-glow: 0 0 0 1px rgba(10, 125, 35, 0.15), 0 8px 32px rgba(10, 125, 35, 0.12);
 }
 
 .dark {
-	--color-bg: #0d1117;
-	--color-fg: #c9d1d9;
-	--color-muted: #8b949e;
+	--color-bg: #0a0d12;
+	--color-fg: #d6dee7;
+	--color-muted: #8a94a3;
 	--color-accent: #7ee787;
-	--color-link: #58a6ff;
-	--color-border: #30363d;
-	--color-code-bg: #161b22;
+	--color-link: #6fb4ff;
+	--color-border: #232a33;
+	--color-code-bg: #11161d;
+
+	--color-bg-elevated: #11161d;
+	--color-surface: rgba(17, 22, 29, 0.6);
+	--color-surface-hover: rgba(17, 22, 29, 0.85);
+	--color-accent-soft: rgba(126, 231, 135, 0.12);
+	--color-accent-strong: #a5f3aa;
+	--color-grad-1: #7ee787;
+	--color-grad-2: #6fb4ff;
+	--color-grad-3: #c490ff;
+	--shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
+	--shadow-glow: 0 0 0 1px rgba(126, 231, 135, 0.18), 0 8px 32px rgba(126, 231, 135, 0.15);
 }
 
-html,
-body {
+html {
 	background-color: var(--color-bg);
+}
+
+body {
+	background: transparent;
 	color: var(--color-fg);
 	font-family: var(--font-sans);
 	line-height: 1.65;
@@ -79,8 +104,9 @@ h4 {
 }
 
 h1 {
-	font-size: 1.875rem;
-	line-height: 1.2;
+	font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.5rem);
+	line-height: 1.15;
+	letter-spacing: -0.02em;
 }
 
 h1::before {
@@ -90,12 +116,18 @@ h1::before {
 
 a {
 	color: var(--color-link);
-	text-decoration: underline;
-	text-underline-offset: 2px;
+	text-decoration: none;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 1px;
+	transition: background-size 180ms ease, color 180ms ease;
 }
 
 a:hover {
-	text-decoration-thickness: 2px;
+	color: var(--color-accent-strong);
+	background-image: linear-gradient(90deg, var(--color-grad-1), var(--color-grad-2), var(--color-grad-3));
+	background-size: 100% 2px;
 }
 
 code {
