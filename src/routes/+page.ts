@@ -17,7 +17,8 @@ export const load: PageLoad = async () => {
 		slug: path.split('/').pop()!.replace(/\.md$/, ''),
 		title: mod.metadata.title,
 		date: formatDate(mod.metadata.date),
-		tags: mod.metadata.tags ?? []
+		tags: mod.metadata.tags ?? [],
+		description: mod.metadata.description
 	}));
 	return { posts };
 };
