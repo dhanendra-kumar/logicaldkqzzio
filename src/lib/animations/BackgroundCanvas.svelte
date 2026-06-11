@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import { pickRandomAnimation, type AnimationDef } from './registry';
+	import { scaleForViewport } from './mobile';
 	import type { SceneHandle } from './scene';
 
 	let { pathname, seed }: { pathname?: string; seed?: number } = $props();
@@ -16,11 +17,6 @@
 		} catch {
 			return false;
 		}
-	}
-
-	function isSmallViewport(): boolean {
-		if (typeof window === 'undefined') return false;
-		return window.innerWidth < 540;
 	}
 
 	function hashString(s: string): number {
@@ -43,8 +39,9 @@
 	const active: AnimationDef | null = $derived.by(() => {
 		if (typeof window === 'undefined') return null;
 		if (isReducedMotion()) return null;
-		if (isSmallViewport()) return null;
-		return pickFor(pathname, seed);
+		const picked = pickFor(pathname, seed);
+		// Scale heavy params down on small viewports for FPS/battery.
+		return { ...picked, params: scaleForViewport(picked.params, window.innerWidth) };
 	});
 
 	$effect(() => {

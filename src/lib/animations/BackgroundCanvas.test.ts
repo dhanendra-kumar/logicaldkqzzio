@@ -32,13 +32,13 @@ describe('BackgroundCanvas', () => {
 		window.matchMedia = original;
 	});
 
-	it('does not pick an animation on very small viewports', () => {
+	it('still picks an animation on small (mobile) viewports', () => {
 		const originalInner = window.innerWidth;
 		Object.defineProperty(window, 'innerWidth', { configurable: true, value: 400 });
 
 		const { container } = render(BackgroundCanvas);
 		const wrapper = container.querySelector('.bg-canvas-wrapper');
-		expect(wrapper?.getAttribute('data-animation')).toBe('');
+		expect(wrapper?.getAttribute('data-animation')).not.toBe('');
 
 		Object.defineProperty(window, 'innerWidth', { configurable: true, value: originalInner });
 	});
