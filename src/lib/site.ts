@@ -6,5 +6,6 @@ export const site = {
 	locale: 'en_US',
 	themeColor: '#0a0d12',
 	defaultOgImage: '/og-default.svg',
-	homePostsLimit: 12
+	homePostsLimit: 12,
+	adsensePublisherId: 'ca-pub-6563619736047937'
 };

@@ -5,6 +5,7 @@
 	import SiteHeader from '$lib/SiteHeader.svelte';
 	import SiteFooter from '$lib/SiteFooter.svelte';
 	import BackgroundCanvas from '$lib/animations/BackgroundCanvas.svelte';
+	import AdSenseLoader from '$lib/AdSenseLoader.svelte';
 
 	let { children } = $props();
 </script>
@@ -13,6 +14,8 @@
 	<link rel="icon" href={favicon} />
 	<link rel="alternate" type="application/rss+xml" title="LogicalDK" href="/rss.xml" />
 </svelte:head>
+
+<AdSenseLoader />
 
 <div class="backdrop" aria-hidden="true"></div>
 <BackgroundCanvas pathname={page.url?.pathname ?? '/'} />
