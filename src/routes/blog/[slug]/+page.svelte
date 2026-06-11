@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
 	import { formatDate } from '$lib/formatDate';
 	import SeoHead from '$lib/SeoHead.svelte';
+	import JsonLd from '$lib/JsonLd.svelte';
 	import { site } from '$lib/site';
 
 	let { data }: { data: PageData } = $props();
@@ -14,6 +15,27 @@
 	description={data.metadata.description ?? ''}
 	url="{site.url}/blog/{data.slug}/"
 	type="article"
+	publishedTime={formattedDate}
+	author={site.author}
+	{tags}
+/>
+
+<JsonLd
+	data={{
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		headline: data.metadata.title,
+		description: data.metadata.description ?? '',
+		datePublished: formattedDate,
+		dateModified: formattedDate,
+		inLanguage: 'en',
+		mainEntityOfPage: { '@type': 'WebPage', '@id': `${site.url}/blog/${data.slug}/` },
+		url: `${site.url}/blog/${data.slug}/`,
+		image: `${site.url}${site.defaultOgImage}`,
+		keywords: tags,
+		author: { '@type': 'Person', name: site.author },
+		publisher: { '@type': 'Organization', name: site.title, url: site.url }
+	}}
 />
 
 <article>

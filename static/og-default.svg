@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="LogicalDK — backend notes from a decade of Java, Spring, and the JVM">
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0%" stop-color="#0a0d12" />
+			<stop offset="100%" stop-color="#11161d" />
+		</linearGradient>
+		<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0%" stop-color="#7ee787" />
+			<stop offset="50%" stop-color="#6fb4ff" />
+			<stop offset="100%" stop-color="#c490ff" />
+		</linearGradient>
+		<radialGradient id="glow" cx="0.2" cy="0.15" r="0.6">
+			<stop offset="0%" stop-color="rgba(126,231,135,0.35)" />
+			<stop offset="100%" stop-color="rgba(126,231,135,0)" />
+		</radialGradient>
+		<radialGradient id="glow2" cx="0.85" cy="0.85" r="0.5">
+			<stop offset="0%" stop-color="rgba(196,144,255,0.25)" />
+			<stop offset="100%" stop-color="rgba(196,144,255,0)" />
+		</radialGradient>
+	</defs>
+
+	<rect width="1200" height="630" fill="url(#bg)" />
+	<rect width="1200" height="630" fill="url(#glow)" />
+	<rect width="1200" height="630" fill="url(#glow2)" />
+
+	<g transform="translate(80, 130)">
+		<rect width="140" height="140" rx="28" ry="28" fill="url(#accent)" />
+		<text
+			x="70"
+			y="74"
+			text-anchor="middle"
+			dominant-baseline="central"
+			font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace"
+			font-size="72"
+			font-weight="700"
+			letter-spacing="-3"
+			fill="#0a0d12"
+		>DK</text>
+	</g>
+
+	<g transform="translate(260, 200)">
+		<text
+			x="0"
+			y="0"
+			font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace"
+			font-size="32"
+			font-weight="500"
+			fill="#8a94a3"
+			letter-spacing="2"
+		>~/ LOGICALDK</text>
+		<text
+			x="0"
+			y="80"
+			font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace"
+			font-size="68"
+			font-weight="700"
+			fill="#d6dee7"
+			letter-spacing="-2"
+		>Backend notes</text>
+		<text
+			x="0"
+			y="158"
+			font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace"
+			font-size="68"
+			font-weight="700"
+			fill="url(#accent)"
+			letter-spacing="-2"
+		>from the JVM trenches.</text>
+	</g>
+
+	<g transform="translate(80, 520)">
+		<text
+			x="0"
+			y="0"
+			font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace"
+			font-size="24"
+			font-weight="500"
+			fill="#8a94a3"
+		>Java · Spring Boot · MongoDB · the small details</text>
+	</g>
+
+	<rect x="0" y="624" width="1200" height="6" fill="url(#accent)" />
+</svg>

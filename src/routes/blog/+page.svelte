@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import SeoHead from '$lib/SeoHead.svelte';
+	import JsonLd from '$lib/JsonLd.svelte';
 	import { site } from '$lib/site';
 
 	let { data }: { data: PageData } = $props();
@@ -11,6 +12,25 @@
 </script>
 
 <SeoHead title="Blog" description="All posts on {site.title}" url="{site.url}/blog/" />
+
+<JsonLd
+	data={{
+		'@context': 'https://schema.org',
+		'@type': 'Blog',
+		name: `${site.title} — Blog`,
+		url: `${site.url}/blog/`,
+		description: `All posts on ${site.title}`,
+		inLanguage: 'en',
+		author: { '@type': 'Person', name: site.author },
+		blogPost: sortedPosts.map((p) => ({
+			'@type': 'BlogPosting',
+			headline: p.title,
+			url: `${site.url}/blog/${p.slug}/`,
+			datePublished: p.date,
+			keywords: p.tags
+		}))
+	}}
+/>
 
 <h1>Blog</h1>
 <p class="lede">Everything I've written down — newest first.</p>

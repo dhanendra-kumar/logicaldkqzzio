@@ -141,6 +141,19 @@ describe('home page', () => {
 	});
 });
 
+describe('home page structured data', () => {
+	it('emits a WebSite JSON-LD block', () => {
+		render(Page, { props: { data: { posts: [] } } });
+		const ldScripts = Array.from(
+			document.head.querySelectorAll('script[type="application/ld+json"]')
+		).map((s) => JSON.parse(s.textContent ?? '{}'));
+		const websiteLd = ldScripts.find((d) => d['@type'] === 'WebSite');
+		expect(websiteLd).toBeTruthy();
+		expect(websiteLd.url).toMatch(/^https?:\/\//);
+		expect(websiteLd.name).toBeTruthy();
+	});
+});
+
 describe('site config', () => {
 	it('exposes a numeric homePostsLimit', async () => {
 		const { site } = await import('$lib/site');

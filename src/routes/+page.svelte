@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SeoHead from '$lib/SeoHead.svelte';
+	import JsonLd from '$lib/JsonLd.svelte';
 	import { site } from '$lib/site';
 
 	type Post = {
@@ -19,6 +20,18 @@
 </script>
 
 <SeoHead title={site.title} description={site.description} url={site.url + '/'} />
+
+<JsonLd
+	data={{
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: site.title,
+		url: site.url + '/',
+		description: site.description,
+		inLanguage: 'en',
+		author: { '@type': 'Person', name: site.author }
+	}}
+/>
 
 <section class="hero">
 	<h1 class="font-mono">LogicalDK<span class="caret" aria-hidden="true"></span></h1>
